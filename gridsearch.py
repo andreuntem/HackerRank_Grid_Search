@@ -1,15 +1,11 @@
-from collections import Counter
-
 def gridSearch(G, P):
 
     # flatten pattern
     pattern = ''.join(P)
-    #counter_pattern = Counter(pattern)
     
     # Length grid and pattern
     r_grid, c_grid = len(G), len(G[0])
     r_pat, c_pat = len(P), len(P[0])
-    #size_pat = r_pat*c_pat
     
     # Check by subgrid:
     found = 'NO'
@@ -19,19 +15,11 @@ def gridSearch(G, P):
             # Define subgrid
             subgrid = [G[i+k][j:j+c_pat] for k in range(r_pat)]
             subgrid = ''.join(subgrid)
-            #counter_subgrid = Counter(subgrid)
 
             if subgrid == pattern:
                 found = 'YES'
                 break
 
-            '''
-            if counter_subgrid == counter_pattern:
-                diff = [pattern[ix] == subgrid[ix] for ix in range(size_pat)]
-                if all(diff) == True:
-                    found = 'YES'
-                    break
-            '''
         if found == 'YES':
             break
 
