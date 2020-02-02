@@ -1,10 +1,8 @@
+from collections import Counter
+
 def gridSearch(G, P):
-    
-    from collections import Counter
 
     # flatten pattern
-    print(G)
-    print(P)
     pattern = ''.join(P)
     list_pattern = list(pattern)
     counter_pattern = Counter(pattern)
@@ -26,11 +24,13 @@ def gridSearch(G, P):
             counter_subgrid = Counter(subgrid)
 
             if counter_subgrid == counter_pattern:
-                print(counter_pattern, counter_subgrid, counter_pattern==counter_subgrid)
                 diff = [list_pattern[ix]==list_subgrid[ix] for ix in range(size_pat)]
                 if all(diff)==True:
                     found = 'YES'
                     break
+
+        if found == 'YES':
+            break
 
     return found
 
