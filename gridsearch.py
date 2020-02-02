@@ -1,7 +1,4 @@
 def gridSearch(G, P):
-
-    # flatten pattern
-    pattern = ''.join(P)
     
     # Length grid and pattern
     r_grid, c_grid = len(G), len(G[0])
@@ -9,14 +6,20 @@ def gridSearch(G, P):
     
     # Check by subgrid:
     found = 'NO'
+    
     for i in  range(r_grid - r_pat + 1):
         for j in range(c_grid - c_pat + 1):
-            
-            # Define subgrid
-            subgrid = [G[i+k][j:j+c_pat] for k in range(r_pat)]
-            subgrid = ''.join(subgrid)
 
-            if subgrid == pattern:
+            pattern_not_found = False
+
+            for k in range(r_pat):
+                subgrid_k = G[i+k][j:j+c_pat]
+                pattern_k = P[k]
+                if pattern_k != subgrid_k:
+                    pattern_not_found = True
+                    break
+            
+            if pattern_not_found == False:
                 found = 'YES'
                 break
 
@@ -24,6 +27,7 @@ def gridSearch(G, P):
             break
 
     return found
+
 
 if __name__ == '__main__':
     raw_inp = '''
