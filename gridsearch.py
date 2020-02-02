@@ -24,8 +24,8 @@ def gridSearch(G, P):
             counter_subgrid = Counter(subgrid)
 
             if counter_subgrid == counter_pattern:
-                diff = [list_pattern[ix]==list_subgrid[ix] for ix in range(size_pat)]
-                if all(diff)==True:
+                diff = [list_pattern[ix] == list_subgrid[ix] for ix in range(size_pat)]
+                if all(diff) == True:
                     found = 'YES'
                     break
 
